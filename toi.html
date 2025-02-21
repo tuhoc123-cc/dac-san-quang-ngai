@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặc sản địa phương - Hương vị truyền thống</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --dark-color: #2d3436;
+            --light-color: #f8f9fa;
+        }
+
+        body {
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .product-header {
+            text-align: center;
+            padding: 40px 0;
+            background: var(--primary-color);
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .product-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            color: var(--dark-color);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .product-origin {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .product-rating {
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .buy-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .buy-button:hover {
+            background: #ff5252;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 40px 0;
+            color: var(--dark-color);
+            font-size: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .product-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="product-header">
+        <div class="container">
+            <h1>Đặc sản địa phương</h1>
+            <p>Khám phá hương vị truyền thống độc đáo</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Sản phẩm nổi bật</h2>
+        <div class="product-grid">
+            <div class="product-card" data-aos="fade-up">
+                <img src="/api/placeholder/400/300" alt="Tỏi Lý Sơn" class="product-image">
+                <div class="product-info">
+                    <h3>Tỏi Lý Sơn</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="product-description">Tỏi Lý Sơn thơm nồng, vị cay đặc trưng, giàu dưỡng chất</p>
+                    <p class="product-origin">Xuất xứ: Đảo Lý Sơn</p>
+                    <p class="product-price">250.000đ/kg</p>
+                    <a href="#" class="buy-button">Đặt mua ngay</a>
+                </div>
+            </div>
+
+            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="/api/placeholder/400/300" alt="Mắm nêm Mỹ Khê" class="product-image">
+                <div class="product-info">
+                    <h3>Mắm nêm Mỹ Khê</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="product-description">Mắm nêm truyền thống, vị đậm đà, hương thơm đặc trưng</p>
+                    <p class="product-origin">Xuất xứ: Mỹ Khê</p>
+                    <p class="product-price">180.000đ/lít</p>
+                    <a href="#" class="buy-button">Đặt mua ngay</a>
+                </div>
+            </div>
+
+            <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="/api/placeholder/400/300" alt="Đường phổi Nghĩa Hành" class="product-image">
+                <div class="product-info">
+                    <h3>Đường phổi Nghĩa Hành</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="product-description">Đường phổi thơm ngon, ngọt thanh từ mía Nghĩa Hành</p>
+                    <p class="product-origin">Xuất xứ: Nghĩa Hành</p>
+                    <p class="product-price">120.000đ/kg</p>
+                    <a href="#" class="buy-button">Đặt mua ngay</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+
+</html>

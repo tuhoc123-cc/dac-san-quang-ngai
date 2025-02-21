@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặc sản Quảng Ngãi - Hương vị quê hương</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        :root {
+            --primary-color: #e67e22;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+        }
+
+        body {
+            background-color: #f5f6fa;
+        }
+
+        /* Enhanced Header */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://www.flc.vn/wp-content/uploads/2019/07/Anh-2-12.jpg') center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .header-content h1 {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInDown 1s ease;
+        }
+
+        .header-content p {
+            font-size: 1.8rem;
+            max-width: 800px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .explore-btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .explore-btn:hover {
+            background: #d35400;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Enhanced Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        nav.scrolled {
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Enhanced Specialties Section */
+        section {
+            padding: 8rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .specialty-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .specialty-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .specialty-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .specialty-card:hover .specialty-image {
+            transform: scale(1.1);
+        }
+
+        .specialty-content {
+            padding: 2rem;
+        }
+
+        .specialty-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .specialty-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .specialty-price {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .specialty-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: var(--light-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--dark-color);
+        }
+
+        /* Enhanced Video Section */
+        .video-section {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            position: relative;
+        }
+
+        .video-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .video-section .section-title {
+            color: white;
+        }
+
+        .video-section .section-title::after {
+            background: white;
+        }
+
+        /* New Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        /* Enhanced Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-section p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 3rem;
+            }
+
+            .header-content p {
+                font-size: 1.3rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        nav {
+            display: flex;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <img width="50px" height="50" style="border-radius: 50%;"
+            src="https://www.beeart.vn/Uploads/project/20200906/0f082d20-974f-4cc2-a644-4a0f44a36a1d.png"
+            class="header-logo-dark" alt="Đặc Sản Quảng Ngãi">
+        <ul>
+            <li><a href="#home">Trang chủ</a></li>
+            <li><a href="#specialties">Đặc sản</a></li>
+            <li><a href="#video">Video</a></li>
+            <li><a href="#features">Điểm nổi bật</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <div class="header-content">
+            <h1>Đặc sản Quảng Ngãi</h1>
+            <p>Khám phá hương vị độc đáo từ vùng đất di sản - Nơi hội tụ tinh hoa ẩm thực</p>
+            <a href="#specialties" class="explore-btn">Khám phá ngay</a>
+        </div>
+    </header>
+
+    <section id="specialties">
+        <h2 class="section-title" data-aos="fade-up">Đặc sản nổi tiếng</h2>
+        <div class="specialties-grid">
+            <div class="specialty-card" data-aos="fade-up">
+                <a href="thanhtoan.html">
+                    <img src="https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2023/5/11/1191108/Mon-An-Dac-San-Quang.jpg"
+                        alt="Bánh tráng Mỹ Cang" class="specialty-image">
+                    <div class="specialty-content">
+                        <div class="specialty-tags">
+                            <span class="tag">Đặc sản</span>
+                            <span class="tag">Truyền thống</span>
+                        </div>
+                        <h3>Don</h3>
+                        <p>Món ăn dân dã được chế biến từ loài nhuyễn thể sống ở sông Trà và sông Vệ. Nước dùng ngọt
+                            thanh,
+                            thịt don mềm dai, thường ăn kèm bánh tráng nướng và rau sống.</p>
+                        <div class="specialty-price">Giá: 50.000đ/gói</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="specialty-card" data-aos="fade-up" data-aos-delay="200">
+                <a href="thanhtoan.html">
+                    <img src="https://thanhnien.mediacdn.vn/Uploaded/2014/Picture20117/MinhNguyet/Thang7/Canuc2.jpg"
+                        alt="Cá nục Lý Sơn" class="specialty-image">
+                    <div class="specialty-content">
+                        <div class="specialty-tags">
+                            <span class="tag">Hải sản</span>
+                            <span class="tag">Tươi sống</span>
+                        </div>
+                        <h3>Cá nục Lý Sơn</h3>
+                        <p>Cá nục đảo Lý Sơn tươi ngon, thịt chắc, ngọt, là đặc sản biển quý giá được nhiều người ưa
+                            chuộng.
+                        </p>
+                        <div class="specialty-price">Giá: 180.000đ/kg</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="specialty-card" data-aos="fade-up" data-aos-delay="400">
+                <a href="thanhtoan.html">
+                    <img src="https://file.hstatic.net/200000332199/file/dac-san-toi-ly-son_65d06b27c4b14ca5b84cfcea155ae689_grande.png"
+                        alt="Tỏi Lý Sơn" class="specialty-image">
+                    <div class="specialty-content">
+                        <div class="specialty-tags">
+                            <span class="tag">Đặc sản</span>
+                            <span class="tag">truyền thống</span>
+                        </div>
+                        <h3>Tỏi Lý Sơn</h3>
+                        <p>Tỏi Lý Sơn nổi tiếng với hương vị cay nồng đặc trưng, củ to, multiple, được trồng trên đất
+                            volcanic màu mỡ.</p>
+                        <div class="specialty-price">Giá: 250.000đ/kg</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="specialty-card" data-aos="fade-up" data-aos-delay="400">
+                <a href="thanhtoan.html">
+                    <img src="https://www.banhpia.vn/site/wp-content/uploads/2022/07/keo-mach-nha-duoc-lam-tu-nguyen-lieu-gi-2.webp"
+                        alt="mạch nha" class="specialty-image">
+                    <div class="specialty-content">
+                        <div class="specialty-tags">
+                            <span class="tag">Đặc sản</span>
+                            <span class="tag">truyền thống</span>
+                        </div>
+                        <h3>Mạch nha</h3>
+                        <p>Được làm từ mộng lúa và đường, mạch nha Quảng Ngãi có vị ngọt dịu, màu vàng óng, thường được
+                            dùng
+                            kèm bánh tráng hoặc làm nhân bánh.</p>
+                        <div class="specialty-price">Giá: 100.000đ/hộp</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="specialty-card" data-aos="fade-up" data-aos-delay="400">
+                <a href="thanhtoan.html">
+                    <img src="https://dacsanhue24h.com/wp-content/uploads/2024/08/image-2.png" alt="kẹo gương"
+                        class="specialty-image">
+                    <div class="specialty-content">
+                        <div class="specialty-tags">
+                            <span class="tag">Đặc sản</span>
+                            <span class="tag">truyền thống</span>
+                        </div>
+                        <h3>Kẹo gương</h3>
+                        <p>TLoại kẹo trong suốt, mỏng như tờ giấy, được làm từ đường, mạch nha, đậu phộng và mè. Kẹo
+                            giòn
+                            tan, ngọt bùi.</p>
+                        <div class="specialty-price">Giá: 35.000đ/gói</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="specialty-card" data-aos="fade-up" data-aos-delay="400">
+                <a href="thanhtoan.html">
+                    <img src="https://www.huongnghiepaau.com/wp-content/uploads/2019/12/mon-banh-que-moc-mac.jpg"
+                        alt="bánh thuẫn" class="specialty-image">
+                    <div class="specialty-content">
+                        <div class="specialty-tags">
+                            <span class="tag">Đặc sản</span>
+                            <span class="tag">truyền thống</span>
+                        </div>
+                        <h3>Bánh thuẫn</h3>
+                        <p>Món bánh truyền thống thường xuất hiện trong các dịp lễ Tết, được làm từ bột bình tinh, trứng
+                            và
+                            đường. Bánh có hình dáng giống bông hoa mai, vị ngọt nhẹ và thơm mùi trứng. </p>
+                        <div class="specialty-price">Giá: 75.000đ/hộp</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="video" class="video-section">
+        <h2 class="section-title" data-aos="fade-up">Khám phá ẩm thực Quảng Ngãi</h2>
+        <div class="video-container" data-aos="fade-up">
+            <iframe width="1000px" height="480" src="https://www.youtube.com/embed/ez6asp7SnSk"
+                title="Top 6 Món Ngon Nhất Định Phải Thử Khi Đến Quảng Ngãi || Quảng Ngãi Ep.01" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section id="features">
+        <h2 class="section-title" data-aos="fade-up">Điểm nổi bật</h2>
+        <div class="features">
+            <div class="feature" data-aos="fade-up">
+                <i class="fas fa-certificate"></i>
+                <h3>Chất lượng đảm bảo</h3>
+                <p>Sản phẩm được chọn lọc kỹ càng, đảm bảo nguồn gốc xuất xứ rõ ràng</p>
+            </div>
+            <div class="feature" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-truck"></i>
+                <h3>Giao hàng toàn quốc</h3>
+                <p>Dịch vụ vận chuyển nhanh chóng, an toàn đến mọi miền tổ quốc</p>
+            </div>
+            <div class="feature" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-heart"></i>
+                <h3>Dịch vụ tận tâm</h3>
+                <p>Đội ngũ tư vấn nhiệt tình, hỗ trợ khách hàng 24/7</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về chúng tôi</h3>
+                <p>Đặc sản Quảng Ngãi tự hào mang đến những sản phẩm chất lượng cao, góp phần quảng bá văn hóa ẩm thực
+                    địa phương.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p><i class="fas fa-phone"></i> 0123 456 789</p>
+                <p><i class="fas fa-envelope"></i> info@dacsanquangngai.vn</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Quang Trung, TP. Quảng Ngãi</p>
+            </div>
+            <div class="footer-section">
+                <h3>Giờ mở cửa</h3>
+                <p>Thứ 2 - Thứ 6: 8:00 - 21:00</p>
+                <p>Thứ 7 - Chủ nhật: 9:00 - 22:00</p>
+                <p>Ngày lễ: 9:00 - 20:00</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Sticky navigation with class toggle
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Lazy loading for images
+        document.addEventListener('DOMContentLoaded', function () {
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => imageObserver.observe(img));
+        });
+    </script>
+</body>
+
+</html>
